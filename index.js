@@ -9,7 +9,6 @@ configCloudinary()
 const PORT = process.env.PORT
 const server = express()
 connect()
-
 server.use(cors({ origin: '*', credentials: true }))
 
 server.use(express.json({ limit: '5mb' }))

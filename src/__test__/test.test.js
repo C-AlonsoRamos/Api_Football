@@ -3,11 +3,14 @@ const request = require('supertest')
 const server = require('../../index')
 
 describe('POST /api/teams', () => {
-  test('should store a new team', async () => {
-    await request(server)
-      .post('/api/teams')
-      .set('Accept', 'application/json')
-      .expect('Content-Type', /json/)
-      .expect(201)
+  it('should store a new team', async () => {
+    const res = await request(server).post('/api/teams').send({
+      name: 'atm',
+      city: 'Madrid',
+      foundation: 444,
+      logo: 'atm.jpg',
+    })
+
+    expect(res.statusCode).toEqual(201)
   })
 })
